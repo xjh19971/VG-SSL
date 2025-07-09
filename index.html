@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel = "icon" href = "assets/title_image.png" type = "image/x-icon">
+        
+  <meta charset="utf-8">
+  <meta name="description"
+        content=VG-SSL: Benchmarking Self-supervised Representation Learning Approaches for Visual Geo-localization">
+  <meta name="keywords" content="Visual Geo-localization,Self-supervised Learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">    
+  <title>VG-SSL: Benchmarking Self-supervised Representation Learning Approaches for Visual Geo-localization</title>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+</head>
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://xjh19971.github.io/">
+        <span class="icon">
+            <i class="fas fa-home"></i>
+        </span>
+        </a>
+  
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Related Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://xjh19971.github.io/STGL/">
+              STGL
+            </a>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">VG-SSL: Benchmarking Self-supervised Representation Learning Approaches for Visual Geo-localization</h1>
+          <h2 class="subtitle is-4 publication-venue"> IEEE/CVF Winter Conference on Applications of Computer Vision (WACV) 2025 </h2>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block">
+              <a href="https://xjh19971.github.io">Jiuhong Xiao</a>,</span>
+              <span class="author-block">
+                <a href="https://github.com/ryougi1201">Gao Zhu</a>,</span> 
+              <span class="author-block">
+                <a href="https://engineering.nyu.edu/faculty/giuseppe-loianno">Giuseppe Loianno</a>,</span> 
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block">New York University</a>
+          </div>
+
+          <div class="column has-text-centered">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2308.00090"
+                   class="external-link button is-normal ">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="https://youtu.be/i_PAvzXKul4"
+                   class="external-link button is-normal ">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- <span class="link-block">
+                <a href="https://huggingface.co/datasets/xjh19972/boson-nighttime/tree/main/satellite-thermal-dataset-v3"
+                   class="external-link button is-normal">
+                  <span class="icon">
+                      <i class="fa fa-face-smiling-hands"></i>
+                  </span>
+                  <span>HF Dataset</span>
+                  </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://github.com/arplaboratory/VG-SSL"
+                   class="external-link button is-normal ">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero teaser">
+  <div class="hero-body">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-three-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/i_PAvzXKul4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>      </div>
+      </div>
+    </div>
+    </div>
+</section> -->
+
+<section class="hero is-small is-light">
+  <div class="hero-body">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Visual Geo-localization (VG) is a critical research area for identifying geo-locations from visual inputs, particularly in autonomous navigation for robotics and vehicles. Current VG methods often learn feature extractors from geo-labeled images to create dense, geographically relevant representations. Recent advances in Self-Supervised Learning (SSL) have demonstrated its capability to achieve performance on par with supervised techniques with unlabeled images. This study presents a novel \textbf{VG-SSL} framework, designed for versatile integration and benchmarking of diverse SSL methods for representation learning in VG, featuring a unique geo-related pair strategy, \textbf{GeoPair}. Through extensive performance analysis, we adapt SSL techniques to improve VG on datasets from hand-held and car-mounted cameras used in robotics and autonomous vehicles. Our results show that contrastive learning and information maximization methods yield superior geo-specific representation quality, matching or surpassing the performance of state-of-the-art VG techniques. To our knowledge, This is the first benchmarking study of SSL in VG, highlighting its potential in enhancing geo-specific visual representations for robotics and autonomous vehicles. The code is publicly available.
+          </p>
+        </div>
+      </div>
+    </div>
+    </div>
+</section>
+
+<!-- <section class="hero is-light">
+<div class="hero-body">
+  <div class="columns is-centered has-text-centered">
+    <div class="column">
+      <h2 class="title is-3" >UASTHN Detected Failure Cases</h2>
+      <p></p>
+    </div>
+  </div>
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+
+      <div class="column has-text-centered">
+        <div class="content">
+          <h2 class="title is-4">Input</h2>
+          <img id="sgm_1" src="./data/sgm/image35.gif" width="400">
+          <img id="sgm_2" src="./data/sgm/image42.gif" width="400">
+          <img id="sgm_3" src="./data/sgm/image36.gif" width="400">
+          <img id="sgm_4" src="./data/sgm/image39.gif" width="400">
+        </div>
+      </div>
+
+      <div class="column has-text-centered">
+        <div class="content">
+          <h2 class="title is-4">Baseline</h2>
+          <img id="sgm_5" src="./data/sgm/image31.gif" width="400">
+          <img id="sgm_6" src="./data/sgm/image32.gif" width="400">
+          <img id="sgm_7" src="./data/sgm/image33.gif" width="400">
+          <img id="sgm_8" src="./data/sgm/image34.gif" width="400">
+        </div>
+      </div>
+
+      <div class="column has-text-centered">
+        <div class="content">
+          <h2 class="title is-4">Ours</h2>
+          <img id="sgm_9" src="./data/sgm/image37.gif" width="400">
+          <img id="sgm_6" src="./data/sgm/image38.gif" width="400">
+          <img id="sgm_7" src="./data/sgm/image40.gif" width="400">
+          <img id="sgm_8" src="./data/sgm/image41.gif" width="400">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="column">
+      <h2 class="title is-3">TGM Generated Thermal Images</h2>
+      <p></p>
+    </div>
+  </div> -->
+
+
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="column">
+      <h2 class="title is-3">Poster Presentation</h2>
+    </div>
+  </div>
+<div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column has-text-centered">
+        <div class="content">
+          <iframe src="data/poster_VG_SSL.pdf" width="100%" height="600px" style="border:none;">
+        </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">BibTeX</h2>
+    <pre><code>
+    @inproceedings{xiao2025vg,
+      title={VG-SSL: Benchmarking Self-Supervised Representation Learning Approaches for Visual Geo-Localization},
+      author={Xiao, Jiuhong and Zhu, Gao and Loianno, Giuseppe},
+      booktitle={2025 IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+      pages={6667--6677},
+      year={2025},
+      organization={IEEE}
+    }
+    </code></pre>
+  </div>
+</section>
+  
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website adapted from the Nerfies templates, which is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            If you use the <a href="https://xjh19971.github.io/STHN/">source code</a> of this website,
+            please also link back to the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies source code</a> in your footer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
