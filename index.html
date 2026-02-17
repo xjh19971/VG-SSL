@@ -5,9 +5,9 @@
   <link rel="icon" href="assets/title_image.png" type="image/x-icon">
 
   <meta charset="utf-8">
-  <meta name="description" content=VG-SSL: Benchmarking Self-supervised Representation Learning Approaches for Visual
-    Geo-localization">
-  <meta name="keywords" content="Visual Geo-localization,Self-supervised Learning">
+  <meta name="description"
+    content="VG-SSL: Benchmarking Self-supervised Representation Learning Approaches for Visual Geo-localization">
+  <meta name="keywords" content="Visual Geo-localization,Self-supervised Learning,VG-SSL,GeoPair">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>VG-SSL: Benchmarking Self-supervised Representation Learning Approaches for Visual Geo-localization</title>
 
@@ -39,6 +39,194 @@
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <style>
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .results-table th {
+      background-color: #3273dc;
+      color: white;
+      padding: 0.6rem 0.5rem;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .results-table td {
+      padding: 0.5rem;
+      text-align: center;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .results-table tbody tr:hover {
+      background-color: #f0f4ff;
+    }
+
+    .results-table .best {
+      font-weight: 700;
+      color: #3273dc;
+    }
+
+    .results-table .second {
+      text-decoration: underline;
+    }
+
+    .results-table .ours-row {
+      background-color: #eef3ff;
+      font-weight: 600;
+    }
+
+    .results-table .ours-row:hover {
+      background-color: #e0ebff;
+    }
+
+    .results-table .table-subheader td {
+      background-color: #f0f0f0;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.5rem 0.75rem;
+      border-top: 2px solid #ccc;
+      color: #444;
+    }
+
+    .results-table .method-col {
+      text-align: left;
+      font-weight: 500;
+    }
+
+    .results-table .category-col {
+      text-align: left;
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.is-active {
+      display: block;
+    }
+
+    figure {
+      margin: 0 0 1.5rem 0;
+    }
+
+    figcaption {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .viz-grid {
+      display: grid;
+      gap: 4px;
+      margin-bottom: 0.75rem;
+    }
+
+    .viz-grid img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+    }
+
+    .viz-grid-7 {
+      grid-template-columns: repeat(7, 1fr);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .viz-label {
+      font-size: 0.75rem;
+      color: #333;
+      font-weight: 600;
+      padding: 2px 0;
+      text-align: center;
+    }
+
+    .viz-input-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      max-width: 400px;
+      margin: 0 auto 1rem auto;
+    }
+
+    .viz-input-grid img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+    }
+
+    .scenario-row {
+      margin-bottom: 1rem;
+    }
+
+    .scenario-inputs {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 0.75rem;
+    }
+
+    .scenario-inputs img {
+      width: 140px;
+      height: auto;
+      border-radius: 6px;
+      border: 2px solid #ddd;
+    }
+
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .scenario-col {
+      text-align: center;
+    }
+
+    .scenario-col img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin-bottom: 4px;
+    }
+
+    .scenario-col .viz-label {
+      font-size: 0.75rem;
+      margin-bottom: 4px;
+    }
+
+    .finding-card {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 1.5rem;
+      height: 100%;
+      text-align: center;
+      border: 1px solid #e8e8e8;
+    }
+
+    .finding-card .icon {
+      margin-bottom: 0.75rem;
+    }
+
+    @media (max-width: 768px) {
+      .scenario-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .viz-grid-7 {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  </style>
 
 </head>
 
@@ -86,19 +274,19 @@
           <div class="column has-text-centered">
             <h1 class="title is-2 publication-title">VG-SSL: Benchmarking Self-supervised Representation Learning
               Approaches for Visual Geo-localization</h1>
-            <h2 class="subtitle is-4 publication-venue"> IEEE/CVF Winter Conference on Applications of Computer Vision
-              (WACV) 2025 </h2>
+            <h2 class="subtitle is-4 publication-venue">IEEE/CVF Winter Conference on Applications of Computer Vision
+              (WACV) 2025</h2>
             <div class="is-size-6 publication-authors">
               <span class="author-block">
                 <a href="https://xjh19971.github.io">Jiuhong Xiao</a>,</span>
               <span class="author-block">
                 <a href="https://github.com/ryougi1201">Gao Zhu</a>,</span>
               <span class="author-block">
-                <a href="https://engineering.nyu.edu/faculty/giuseppe-loianno">Giuseppe Loianno</a>,</span>
+                <a href="https://engineering.nyu.edu/faculty/giuseppe-loianno">Giuseppe Loianno</a></span>
             </div>
 
             <div class="is-size-6 publication-authors">
-              <span class="author-block">New York University</a>
+              <span class="author-block">New York University</span>
             </div>
 
             <div class="column has-text-centered">
@@ -110,30 +298,20 @@
                   <span>arXiv</span>
                 </a>
               </span>
-              <!-- <span class="link-block">
-                <a href="https://youtu.be/i_PAvzXKul4"
-                   class="external-link button is-normal ">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span> -->
-              <!-- <span class="link-block">
-                <a href="https://huggingface.co/datasets/xjh19972/boson-nighttime/tree/main/satellite-thermal-dataset-v3"
-                   class="external-link button is-normal">
-                  <span class="icon">
-                      <i class="fa fa-face-smiling-hands"></i>
-                  </span>
-                  <span>HF Dataset</span>
-                  </a>
-              </span> -->
               <span class="link-block">
                 <a href="https://github.com/arplaboratory/VG-SSL" class="external-link button is-normal ">
                   <span class="icon">
                     <i class="fab fa-github"></i>
                   </span>
                   <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="data/poster_VG_SSL.pdf" class="external-link button is-normal ">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Poster</span>
                 </a>
               </span>
             </div>
@@ -148,8 +326,7 @@
               <p class="is-size-5">
                 VG-SSL provides a comprehensive benchmark for <strong>self-supervised representation learning in visual
                   geo-localization</strong>, demonstrating that SSL methods like contrastive learning can match or
-                surpass
-                supervised techniques using the novel <strong>GeoPair strategy</strong>.
+                surpass supervised techniques using the novel <strong>GeoPair</strong> strategy.
               </p>
             </div>
           </div>
@@ -157,20 +334,6 @@
       </div>
     </div>
   </section>
-
-  <!-- <section class="hero teaser">
-  <div class="hero-body">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-three-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/i_PAvzXKul4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>      </div>
-      </div>
-    </div>
-    </div>
-</section> -->
-
-
 
   <section class="hero is-small is-light">
     <div class="hero-body">
@@ -186,12 +349,14 @@
                 feature extractors from geo-labeled images to create dense, geographically relevant representations.
                 Recent advances in Self-Supervised Learning (SSL) have demonstrated its capability to achieve
                 performance on par with supervised techniques with unlabeled images. This study presents a novel
-                \textbf{VG-SSL} framework, designed for versatile integration and benchmarking of diverse SSL methods
-                for representation learning in VG, featuring a unique geo-related pair strategy, \textbf{GeoPair}.
+                <strong>VG-SSL</strong> framework, designed for versatile integration and benchmarking of diverse SSL
+                methods
+                for representation learning in VG, featuring a unique geo-related pair strategy,
+                <strong>GeoPair</strong>.
                 Through extensive performance analysis, we adapt SSL techniques to improve VG on datasets from hand-held
                 and car-mounted cameras used in robotics and autonomous vehicles. Our results show that contrastive
                 learning and information maximization methods yield superior geo-specific representation quality,
-                matching or surpassing the performance of state-of-the-art VG techniques. To our knowledge, This is the
+                matching or surpassing the performance of state-of-the-art VG techniques. To our knowledge, this is the
                 first benchmarking study of SSL in VG, highlighting its potential in enhancing geo-specific visual
                 representations for robotics and autonomous vehicles. The code is publicly available.
               </p>
@@ -199,65 +364,665 @@
           </div>
         </div>
       </div>
+    </div>
   </section>
 
-  <!-- <section class="hero is-light">
-<div class="hero-body">
-  <div class="columns is-centered has-text-centered">
-    <div class="column">
-      <h2 class="title is-3" >UASTHN Detected Failure Cases</h2>
-      <p></p>
+  <!-- Key Findings -->
+  <section class="section" style="padding-bottom: 2rem;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Key Findings</h2>
+        </div>
+      </div>
+      <div class="columns is-multiline">
+        <div class="column is-4">
+          <div class="finding-card">
+            <div class="finding-icon">
+              <span class="icon is-large has-text-info"><i class="fas fa-chart-line fa-2x"></i></span>
+            </div>
+            <h3 class="title is-5">SSL Matches Supervised</h3>
+            <p>Contrastive and information maximization SSL methods match or surpass ImageNet-supervised features
+              for VG, even without geo-labels during pre-training.</p>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="finding-card">
+            <div class="finding-icon">
+              <span class="icon is-large has-text-success"><i class="fas fa-map-marker-alt fa-2x"></i></span>
+            </div>
+            <h3 class="title is-5">GeoPair Boosts Performance</h3>
+            <p>The novel GeoPair strategy, which creates positive pairs from geographically nearby images,
+              consistently improves SSL representations across all methods.</p>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="finding-card">
+            <div class="finding-icon">
+              <span class="icon is-large has-text-warning"><i class="fas fa-eye fa-2x"></i></span>
+            </div>
+            <h3 class="title is-5">Better Feature Focus</h3>
+            <p>SSL-trained models attend more to geo-relevant structures like buildings and landmarks, while
+              supervised models often focus on transient objects like vehicles.</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
+  <!-- Method Overview -->
+  <section class="section">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method Overview</h2>
+          <div class="content has-text-justified">
+            <p>
+              The VG-SSL framework integrates diverse self-supervised learning methods for visual geo-localization.
+              It features a modular design supporting contrastive learning (MoCo v2, SimCLR), information maximization
+              (Barlow Twins, VICReg), and self-distillation (BYOL, SimSiam) approaches. The novel GeoPair strategy
+              constructs geographically relevant positive pairs by sampling nearby images within a controllable
+              radius, enabling SSL pre-training that captures geo-specific visual patterns.
+            </p>
+          </div>
+          <figure>
+            <img src="./figure/VG_SSL-1.png" alt="VG-SSL Framework Overview" loading="lazy"
+              style="max-width: 50%; border-radius: 4px;">
+            <figcaption>
+              <strong>Overview of VG-SSL.</strong> The framework supports multiple SSL methods with a unified
+              architecture. GeoPair creates positive pairs from geographically nearby images, enabling
+              geo-specific representation learning without explicit geo-labels.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+  </section>
 
-      <div class="column has-text-centered">
-        <div class="content">
-          <h2 class="title is-4">Input</h2>
-          <img id="sgm_1" src="./data/sgm/image35.gif" width="400">
-          <img id="sgm_2" src="./data/sgm/image42.gif" width="400">
-          <img id="sgm_3" src="./data/sgm/image36.gif" width="400">
-          <img id="sgm_4" src="./data/sgm/image39.gif" width="400">
+  <!-- Quantitative Results -->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Quantitative Results</h2>
+          <p class="subtitle is-6" style="margin-top: -0.5rem; color: #666;">
+            Recall@N (%) for one-stage methods with ResNet-50-GeM (D<sub>g</sub>=1024) and DeiT-S (D<sub>g</sub>=256) backbones, trained on Pitts30k.
+          </p>
         </div>
       </div>
 
-      <div class="column has-text-centered">
-        <div class="content">
-          <h2 class="title is-4">Baseline</h2>
-          <img id="sgm_5" src="./data/sgm/image31.gif" width="400">
-          <img id="sgm_6" src="./data/sgm/image32.gif" width="400">
-          <img id="sgm_7" src="./data/sgm/image33.gif" width="400">
-          <img id="sgm_8" src="./data/sgm/image34.gif" width="400">
-        </div>
-      </div>
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <!-- Tabs -->
+          <div class="tabs is-centered is-boxed" id="results-tabs">
+            <ul>
+              <li class="is-active" data-target="tab-pitts30k"><a>Pitts30k</a></li>
+              <li data-target="tab-msls"><a>MSLS</a></li>
+              <li data-target="tab-247"><a>24/7 Tokyo</a></li>
+            </ul>
+          </div>
 
-      <div class="column has-text-centered">
-        <div class="content">
-          <h2 class="title is-4">Ours</h2>
-          <img id="sgm_9" src="./data/sgm/image37.gif" width="400">
-          <img id="sgm_6" src="./data/sgm/image38.gif" width="400">
-          <img id="sgm_7" src="./data/sgm/image40.gif" width="400">
-          <img id="sgm_8" src="./data/sgm/image41.gif" width="400">
+          <!-- Pitts30k Table -->
+          <div id="tab-pitts30k" class="tab-content is-active">
+            <div class="table-container">
+              <table class="results-table">
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>Category</th>
+                    <th>R@1</th>
+                    <th>R@5</th>
+                    <th>R@10</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-subheader">
+                    <td colspan="5">ResNet-50-GeM (D<sub>g</sub>=1024)</td>
+                  </tr>
+                  <tr>
+                    <td class="method-col">Triplet Loss (Baseline)</td>
+                    <td class="category-col">Supervised</td>
+                    <td>76.7</td>
+                    <td>89.1</td>
+                    <td>92.3</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">SimCLR + GeoPair</td>
+                    <td class="category-col">Contrastive</td>
+                    <td class="best">82.8</td>
+                    <td class="second">91.9</td>
+                    <td class="second">94.6</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">MoCo v2 + GeoPair</td>
+                    <td class="category-col">Contrastive</td>
+                    <td class="second">82.6</td>
+                    <td class="best">92.4</td>
+                    <td class="best">95.1</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">Barlow Twins + GeoPair</td>
+                    <td class="category-col">Info. Max.</td>
+                    <td>80.8</td>
+                    <td>91.7</td>
+                    <td>94.2</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">VICReg + GeoPair</td>
+                    <td class="category-col">Info. Max.</td>
+                    <td>80.2</td>
+                    <td>91.3</td>
+                    <td>94.1</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">BYOL + GeoPair</td>
+                    <td class="category-col">Distillation</td>
+                    <td>80.2</td>
+                    <td>91.5</td>
+                    <td>94.4</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">SimSiam + GeoPair</td>
+                    <td class="category-col">Distillation</td>
+                    <td>78.6</td>
+                    <td>89.8</td>
+                    <td>92.7</td>
+                  </tr>
+                  <tr class="table-subheader">
+                    <td colspan="5">DeiT-S (D<sub>g</sub>=256)</td>
+                  </tr>
+                  <tr>
+                    <td class="method-col">Triplet Loss (Baseline)</td>
+                    <td class="category-col">Supervised</td>
+                    <td>72.9</td>
+                    <td>88.5</td>
+                    <td>92.6</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">SimCLR + GeoPair</td>
+                    <td class="category-col">Contrastive</td>
+                    <td class="best">84.7</td>
+                    <td class="best">93.9</td>
+                    <td class="best">96.0</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">MoCo v2 + GeoPair</td>
+                    <td class="category-col">Contrastive</td>
+                    <td>80.8</td>
+                    <td class="second">92.4</td>
+                    <td>95.0</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">Barlow Twins + GeoPair</td>
+                    <td class="category-col">Info. Max.</td>
+                    <td class="second">82.6</td>
+                    <td>92.1</td>
+                    <td>95.0</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">VICReg + GeoPair</td>
+                    <td class="category-col">Info. Max.</td>
+                    <td>81.7</td>
+                    <td>92.3</td>
+                    <td class="second">95.2</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">BYOL + GeoPair</td>
+                    <td class="category-col">Distillation</td>
+                    <td>76.6</td>
+                    <td>89.4</td>
+                    <td>92.9</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">SimSiam + GeoPair</td>
+                    <td class="category-col">Distillation</td>
+                    <td>79.7</td>
+                    <td>91.0</td>
+                    <td>93.5</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- MSLS Table -->
+          <div id="tab-msls" class="tab-content">
+            <div class="table-container">
+              <table class="results-table">
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>Category</th>
+                    <th>R@1</th>
+                    <th>R@5</th>
+                    <th>R@10</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-subheader">
+                    <td colspan="5">ResNet-50-GeM (D<sub>g</sub>=1024)</td>
+                  </tr>
+                  <tr>
+                    <td class="method-col">Triplet Loss (Baseline)</td>
+                    <td class="category-col">Supervised</td>
+                    <td>76.9</td>
+                    <td>86.1</td>
+                    <td>89.5</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">SimCLR + GeoPair</td>
+                    <td class="category-col">Contrastive</td>
+                    <td class="best">84.2</td>
+                    <td class="best">92.3</td>
+                    <td class="best">94.2</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">MoCo v2 + GeoPair</td>
+                    <td class="category-col">Contrastive</td>
+                    <td class="second">81.5</td>
+                    <td class="second">90.5</td>
+                    <td class="second">92.8</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">Barlow Twins + GeoPair</td>
+                    <td class="category-col">Info. Max.</td>
+                    <td>79.5</td>
+                    <td>89.5</td>
+                    <td>91.9</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">VICReg + GeoPair</td>
+                    <td class="category-col">Info. Max.</td>
+                    <td>77.4</td>
+                    <td>89.3</td>
+                    <td>91.2</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">BYOL + GeoPair</td>
+                    <td class="category-col">Distillation</td>
+                    <td>72.7</td>
+                    <td>85.5</td>
+                    <td>87.7</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">SimSiam + GeoPair</td>
+                    <td class="category-col">Distillation</td>
+                    <td>75.0</td>
+                    <td>85.8</td>
+                    <td>88.6</td>
+                  </tr>
+                  <tr class="table-subheader">
+                    <td colspan="5">DeiT-S (D<sub>g</sub>=256)</td>
+                  </tr>
+                  <tr>
+                    <td class="method-col">Triplet Loss (Baseline)</td>
+                    <td class="category-col">Supervised</td>
+                    <td>79.3</td>
+                    <td>90.5</td>
+                    <td>92.7</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">SimCLR + GeoPair</td>
+                    <td class="category-col">Contrastive</td>
+                    <td class="best">81.1</td>
+                    <td class="second">91.8</td>
+                    <td class="best">93.1</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">MoCo v2 + GeoPair</td>
+                    <td class="category-col">Contrastive</td>
+                    <td>76.1</td>
+                    <td>88.5</td>
+                    <td>91.1</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">Barlow Twins + GeoPair</td>
+                    <td class="category-col">Info. Max.</td>
+                    <td class="second">79.7</td>
+                    <td class="best">91.4</td>
+                    <td class="best">93.1</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">VICReg + GeoPair</td>
+                    <td class="category-col">Info. Max.</td>
+                    <td>75.8</td>
+                    <td>89.5</td>
+                    <td>91.9</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">BYOL + GeoPair</td>
+                    <td class="category-col">Distillation</td>
+                    <td>58.2</td>
+                    <td>75.3</td>
+                    <td>79.6</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">SimSiam + GeoPair</td>
+                    <td class="category-col">Distillation</td>
+                    <td>56.2</td>
+                    <td>76.2</td>
+                    <td>80.1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 24/7 Tokyo Table -->
+          <div id="tab-247" class="tab-content">
+            <div class="table-container">
+              <table class="results-table">
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>Category</th>
+                    <th>R@1</th>
+                    <th>R@5</th>
+                    <th>R@10</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-subheader">
+                    <td colspan="5">ResNet-50-GeM (D<sub>g</sub>=1024)</td>
+                  </tr>
+                  <tr>
+                    <td class="method-col">Triplet Loss (Baseline)</td>
+                    <td class="category-col">Supervised</td>
+                    <td>50.2</td>
+                    <td>67.9</td>
+                    <td class="second">76.8</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">SimCLR + GeoPair</td>
+                    <td class="category-col">Contrastive</td>
+                    <td class="best">54.6</td>
+                    <td class="best">74.9</td>
+                    <td class="best">81.9</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">MoCo v2 + GeoPair</td>
+                    <td class="category-col">Contrastive</td>
+                    <td class="second">53.4</td>
+                    <td class="second">68.3</td>
+                    <td>76.5</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">Barlow Twins + GeoPair</td>
+                    <td class="category-col">Info. Max.</td>
+                    <td>45.7</td>
+                    <td>61.9</td>
+                    <td>70.8</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">VICReg + GeoPair</td>
+                    <td class="category-col">Info. Max.</td>
+                    <td>50.2</td>
+                    <td>65.4</td>
+                    <td>74.3</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">BYOL + GeoPair</td>
+                    <td class="category-col">Distillation</td>
+                    <td>44.8</td>
+                    <td>63.8</td>
+                    <td>70.8</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">SimSiam + GeoPair</td>
+                    <td class="category-col">Distillation</td>
+                    <td>51.1</td>
+                    <td>67.6</td>
+                    <td>71.4</td>
+                  </tr>
+                  <tr class="table-subheader">
+                    <td colspan="5">DeiT-S (D<sub>g</sub>=256)</td>
+                  </tr>
+                  <tr>
+                    <td class="method-col">Triplet Loss (Baseline)</td>
+                    <td class="category-col">Supervised</td>
+                    <td>43.5</td>
+                    <td>65.7</td>
+                    <td>72.4</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">SimCLR + GeoPair</td>
+                    <td class="category-col">Contrastive</td>
+                    <td class="best">59.4</td>
+                    <td class="best">76.2</td>
+                    <td class="second">80.0</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">MoCo v2 + GeoPair</td>
+                    <td class="category-col">Contrastive</td>
+                    <td>50.8</td>
+                    <td>69.8</td>
+                    <td>77.1</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">Barlow Twins + GeoPair</td>
+                    <td class="category-col">Info. Max.</td>
+                    <td class="second">58.4</td>
+                    <td class="second">75.2</td>
+                    <td class="best">80.6</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">VICReg + GeoPair</td>
+                    <td class="category-col">Info. Max.</td>
+                    <td>51.7</td>
+                    <td>66.7</td>
+                    <td>74.6</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">BYOL + GeoPair</td>
+                    <td class="category-col">Distillation</td>
+                    <td>43.2</td>
+                    <td>62.2</td>
+                    <td>68.6</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">SimSiam + GeoPair</td>
+                    <td class="category-col">Distillation</td>
+                    <td>47.3</td>
+                    <td>63.8</td>
+                    <td>74.0</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <p class="has-text-centered" style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+            <span class="best">Blue bold</span> = best result.
+            <span class="second">Underlined</span> = second best.
+            <span
+              style="background-color: #eef3ff; padding: 0.1rem 0.4rem; border-radius: 3px; font-weight: 600;">Highlighted
+              rows</span>
+            = our methods (with GeoPair).
+          </p>
         </div>
       </div>
     </div>
-  </div>
-</div>
-</section>
-
-
-<section class="section">
-  <div class="columns is-centered has-text-centered">
-    <div class="column">
-      <h2 class="title is-3">TGM Generated Thermal Images</h2>
-      <p></p>
     </div>
-  </div> -->
+  </section>
 
+  <!-- Qualitative Results -->
+  <section class="section">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Qualitative Results</h2>
+        <div class="content has-text-justified" style="max-width: 900px; margin: 0 auto;">
+          <p>
+            GradCAM activation maps reveal how different methods attend to image regions.
+            SSL methods with GeoPair focus more on geo-relevant structures (buildings, landmarks)
+            rather than transient objects, leading to more robust place recognition.
+            Each row below shows one scenario — compare across methods to see the differences.
+          </p>
+        </div>
 
+        <!-- Scenario 1: Pitts30k -->
+        <div class="scenario-row" style="margin-top: 2rem;">
+          <h3 class="title is-4" style="margin-bottom: 0.5rem;">Pitts30k</h3>
+          <div class="scenario-inputs">
+            <div>
+              <div class="viz-label">Query</div>
+              <img src="./figure/pitts30k_sample_7/input_0.jpg" alt="Pitts30k Query">
+            </div>
+            <div>
+              <div class="viz-label">Database</div>
+              <img src="./figure/pitts30k_sample_7/input_1.jpg" alt="Pitts30k Database">
+            </div>
+          </div>
+          <div class="scenario-grid">
+            <div class="scenario-col">
+              <div class="viz-label">Triplet Loss</div>
+              <img src="./figure/pitts30k_sample_7/pitts30knoneresnet50conv40.jpg" alt="Triplet Query" loading="lazy">
+              <img src="./figure/pitts30k_sample_7/pitts30knoneresnet50conv41.jpg" alt="Triplet DB" loading="lazy">
+            </div>
+            <div class="scenario-col">
+              <div class="viz-label">MoCo v2</div>
+              <img src="./figure/pitts30k_sample_7/pitts30kmocov2resnet50conv50.jpg" alt="MoCov2 Query" loading="lazy">
+              <img src="./figure/pitts30k_sample_7/pitts30kmocov2resnet50conv51.jpg" alt="MoCov2 DB" loading="lazy">
+            </div>
+            <div class="scenario-col">
+              <div class="viz-label">SimCLR</div>
+              <img src="./figure/pitts30k_sample_7/pitts30ksimclrresnet50conv50.jpg" alt="SimCLR Query" loading="lazy">
+              <img src="./figure/pitts30k_sample_7/pitts30ksimclrresnet50conv51.jpg" alt="SimCLR DB" loading="lazy">
+            </div>
+            <div class="scenario-col">
+              <div class="viz-label">VICReg</div>
+              <img src="./figure/pitts30k_sample_7/pitts30kvicregresnet50conv50.jpg" alt="VICReg Query" loading="lazy">
+              <img src="./figure/pitts30k_sample_7/pitts30kvicregresnet50conv51.jpg" alt="VICReg DB" loading="lazy">
+            </div>
+            <div class="scenario-col">
+              <div class="viz-label">Barlow Twins</div>
+              <img src="./figure/pitts30k_sample_7/pitts30kbtresnet50conv50.jpg" alt="BT Query" loading="lazy">
+              <img src="./figure/pitts30k_sample_7/pitts30kbtresnet50conv51.jpg" alt="BT DB" loading="lazy">
+            </div>
+            <div class="scenario-col">
+              <div class="viz-label">BYOL</div>
+              <img src="./figure/pitts30k_sample_7/pitts30kbyolresnet50conv50.jpg" alt="BYOL Query" loading="lazy">
+              <img src="./figure/pitts30k_sample_7/pitts30kbyolresnet50conv51.jpg" alt="BYOL DB" loading="lazy">
+            </div>
+            <div class="scenario-col">
+              <div class="viz-label">SimSiam</div>
+              <img src="./figure/pitts30k_sample_7/pitts30ksimsiamresnet50conv50.jpg" alt="SimSiam Query" loading="lazy">
+              <img src="./figure/pitts30k_sample_7/pitts30ksimsiamresnet50conv51.jpg" alt="SimSiam DB" loading="lazy">
+            </div>
+          </div>
+        </div>
 
+        <hr style="margin: 1.5rem 0;">
+
+        <!-- Scenario 2: MSLS -->
+        <div class="scenario-row">
+          <h3 class="title is-4" style="margin-bottom: 0.5rem;">MSLS</h3>
+          <div class="scenario-inputs">
+            <div>
+              <div class="viz-label">Query</div>
+              <img src="./figure/msls_sample_1/input_0.jpg" alt="MSLS Query">
+            </div>
+            <div>
+              <div class="viz-label">Database</div>
+              <img src="./figure/msls_sample_1/input_1.jpg" alt="MSLS Database">
+            </div>
+          </div>
+          <div class="scenario-grid">
+            <div class="scenario-col">
+              <div class="viz-label">Triplet Loss</div>
+              <img src="./figure/msls_sample_1/pitts30knoneresnet50conv40.jpg" alt="Triplet Query" loading="lazy">
+              <img src="./figure/msls_sample_1/pitts30knoneresnet50conv41.jpg" alt="Triplet DB" loading="lazy">
+            </div>
+            <div class="scenario-col">
+              <div class="viz-label">MoCo v2</div>
+              <img src="./figure/msls_sample_1/pitts30kmocov2resnet50conv50.jpg" alt="MoCov2 Query" loading="lazy">
+              <img src="./figure/msls_sample_1/pitts30kmocov2resnet50conv51.jpg" alt="MoCov2 DB" loading="lazy">
+            </div>
+            <div class="scenario-col">
+              <div class="viz-label">SimCLR</div>
+              <img src="./figure/msls_sample_1/pitts30ksimclrresnet50conv50.jpg" alt="SimCLR Query" loading="lazy">
+              <img src="./figure/msls_sample_1/pitts30ksimclrresnet50conv51.jpg" alt="SimCLR DB" loading="lazy">
+            </div>
+            <div class="scenario-col">
+              <div class="viz-label">VICReg</div>
+              <img src="./figure/msls_sample_1/pitts30kvicregresnet50conv50.jpg" alt="VICReg Query" loading="lazy">
+              <img src="./figure/msls_sample_1/pitts30kvicregresnet50conv51.jpg" alt="VICReg DB" loading="lazy">
+            </div>
+            <div class="scenario-col">
+              <div class="viz-label">Barlow Twins</div>
+              <img src="./figure/msls_sample_1/pitts30kbtresnet50conv50.jpg" alt="BT Query" loading="lazy">
+              <img src="./figure/msls_sample_1/pitts30kbtresnet50conv51.jpg" alt="BT DB" loading="lazy">
+            </div>
+            <div class="scenario-col">
+              <div class="viz-label">BYOL</div>
+              <img src="./figure/msls_sample_1/pitts30kbyolresnet50conv50.jpg" alt="BYOL Query" loading="lazy">
+              <img src="./figure/msls_sample_1/pitts30kbyolresnet50conv51.jpg" alt="BYOL DB" loading="lazy">
+            </div>
+            <div class="scenario-col">
+              <div class="viz-label">SimSiam</div>
+              <img src="./figure/msls_sample_1/pitts30ksimsiamresnet50conv50.jpg" alt="SimSiam Query" loading="lazy">
+              <img src="./figure/msls_sample_1/pitts30ksimsiamresnet50conv51.jpg" alt="SimSiam DB" loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <hr style="margin: 1.5rem 0;">
+
+        <!-- Scenario 3: 24/7 Tokyo -->
+        <div class="scenario-row">
+          <h3 class="title is-4" style="margin-bottom: 0.5rem;">24/7 Tokyo</h3>
+          <div class="scenario-inputs">
+            <div>
+              <div class="viz-label">Query</div>
+              <img src="./figure/247_sample_2/input_0.jpg" alt="Tokyo Query">
+            </div>
+            <div>
+              <div class="viz-label">Database</div>
+              <img src="./figure/247_sample_2/input_1.jpg" alt="Tokyo Database">
+            </div>
+          </div>
+          <div class="scenario-grid">
+            <div class="scenario-col">
+              <div class="viz-label">Triplet Loss</div>
+              <img src="./figure/247_sample_2/pitts30knoneresnet50conv40.jpg" alt="Triplet Query" loading="lazy">
+              <img src="./figure/247_sample_2/pitts30knoneresnet50conv41.jpg" alt="Triplet DB" loading="lazy">
+            </div>
+            <div class="scenario-col">
+              <div class="viz-label">MoCo v2</div>
+              <img src="./figure/247_sample_2/pitts30kmocov2resnet50conv50.jpg" alt="MoCov2 Query" loading="lazy">
+              <img src="./figure/247_sample_2/pitts30kmocov2resnet50conv51.jpg" alt="MoCov2 DB" loading="lazy">
+            </div>
+            <div class="scenario-col">
+              <div class="viz-label">SimCLR</div>
+              <img src="./figure/247_sample_2/pitts30ksimclrresnet50conv50.jpg" alt="SimCLR Query" loading="lazy">
+              <img src="./figure/247_sample_2/pitts30ksimclrresnet50conv51.jpg" alt="SimCLR DB" loading="lazy">
+            </div>
+            <div class="scenario-col">
+              <div class="viz-label">VICReg</div>
+              <img src="./figure/247_sample_2/pitts30kvicregresnet50conv50.jpg" alt="VICReg Query" loading="lazy">
+              <img src="./figure/247_sample_2/pitts30kvicregresnet50conv51.jpg" alt="VICReg DB" loading="lazy">
+            </div>
+            <div class="scenario-col">
+              <div class="viz-label">Barlow Twins</div>
+              <img src="./figure/247_sample_2/pitts30kbtresnet50conv50.jpg" alt="BT Query" loading="lazy">
+              <img src="./figure/247_sample_2/pitts30kbtresnet50conv51.jpg" alt="BT DB" loading="lazy">
+            </div>
+            <div class="scenario-col">
+              <div class="viz-label">BYOL</div>
+              <img src="./figure/247_sample_2/pitts30kbyolresnet50conv50.jpg" alt="BYOL Query" loading="lazy">
+              <img src="./figure/247_sample_2/pitts30kbyolresnet50conv51.jpg" alt="BYOL DB" loading="lazy">
+            </div>
+            <div class="scenario-col">
+              <div class="viz-label">SimSiam</div>
+              <img src="./figure/247_sample_2/pitts30ksimsiamresnet50conv50.jpg" alt="SimSiam Query" loading="lazy">
+              <img src="./figure/247_sample_2/pitts30ksimsiamresnet50conv51.jpg" alt="SimSiam DB" loading="lazy">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Poster -->
   <section class="section">
     <div class="columns is-centered has-text-centered">
       <div class="column">
@@ -279,16 +1044,14 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title is-3">BibTeX</h2>
-      <pre><code>
-    @inproceedings{xiao2025vg,
-      title={VG-SSL: Benchmarking Self-Supervised Representation Learning Approaches for Visual Geo-Localization},
-      author={Xiao, Jiuhong and Zhu, Gao and Loianno, Giuseppe},
-      booktitle={2025 IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
-      pages={6667--6677},
-      year={2025},
-      organization={IEEE}
-    }
-    </code></pre>
+      <pre><code>@inproceedings{xiao2025vg,
+  title={VG-SSL: Benchmarking Self-Supervised Representation Learning Approaches for Visual Geo-Localization},
+  author={Xiao, Jiuhong and Zhu, Gao and Loianno, Giuseppe},
+  booktitle={2025 IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+  pages={6667--6677},
+  year={2025},
+  organization={IEEE}
+}</code></pre>
     </div>
   </section>
 
@@ -318,6 +1081,23 @@
       </div>
     </div>
   </footer>
+
+  <!-- Tab switching script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Results tabs
+      const resultTabs = document.querySelectorAll('#results-tabs li');
+      resultTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          resultTabs.forEach(t => t.classList.remove('is-active'));
+          document.querySelectorAll('#results-tabs ~ .tab-content').forEach(c => c.classList.remove('is-active'));
+          tab.classList.add('is-active');
+          document.getElementById(tab.dataset.target).classList.add('is-active');
+        });
+      });
+
+    });
+  </script>
 
 </body>
 
